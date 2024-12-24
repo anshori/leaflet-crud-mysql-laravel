@@ -34,18 +34,6 @@ class PolygonController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		// validate request
-		$request->validate(
-			[
-				'name' => 'required',
-				'geom_polygon' => 'required'
-			],
-			[
-				'name.required' => 'Name is required',
-				'geom_polygon.required' => 'Geometry is required'
-			]
-		);
-
 		$data = [
 			'name' => $request->name,
 			'description' => $request->description,
@@ -57,7 +45,7 @@ class PolygonController extends Controller
 			return redirect()->back()->with('error', 'Failed to create polygon');
 		}
 
-		// redirect to map
+		// redirect back
 		return redirect()->back()->with('success', 'Polygon created successfully');
 	}
 
@@ -74,7 +62,13 @@ class PolygonController extends Controller
 	 */
 	public function edit(string $id)
 	{
-		//
+		$data = [
+			'title' => 'Edit Polygon',
+			'page' => 'edit-polygon',
+			'id' => $id
+		];
+
+		return view('edit', $data);
 	}
 
 	/**
@@ -82,7 +76,17 @@ class PolygonController extends Controller
 	 */
 	public function update(Request $request, string $id)
 	{
-		//
+		$data = [
+			'name' => $request->name,
+			'description' => $request->description,
+			'geom' => DB::raw("ST_GeomFromText('$request->geom')")
+		];
+
+		if (!$this->polygon->find($id)->update($data)) {
+			return redirect()->back()->with('error', 'Failed to update polygon');
+		}
+
+		return redirect()->route('/')->with('success', 'Polygon updated successfully');
 	}
 
 	/**

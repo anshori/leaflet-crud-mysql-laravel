@@ -8,7 +8,7 @@
       <ul class="navbar-nav ms-auto">
         @if ($page !== "map")
         <li class="nav-item">
-          <a class="nav-link" href=""><i class="bi bi-globe-asia-australia"></i> Home</a>
+          <a class="nav-link" href="{{ route('/') }}"><i class="bi bi-globe-asia-australia"></i> Home</a>
         </li>
         @endif
         <li class="nav-item">

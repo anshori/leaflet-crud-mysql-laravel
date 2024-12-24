@@ -14,4 +14,9 @@ class Polygons extends Model
 	{
 		return $this->select(DB::raw('id, name, description, ST_AsGeoJSON(geom) as geom, ST_Area(ST_SRID(geom, 4326)) as area, created_at, updated_at'))->get();
 	}
+
+	public function polygon($id)
+	{
+		return $this->select(DB::raw('id, name, description, ST_AsGeoJSON(geom) as geom, ST_Area(ST_SRID(geom, 4326)) as area, created_at, updated_at'))->find($id);
+	}
 }

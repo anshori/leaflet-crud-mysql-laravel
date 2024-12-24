@@ -1,4 +1,4 @@
-@extends('layouts.template-main')
+@extends('layouts.template')
 
 @section('content')
 <div id="map"></div>
@@ -103,14 +103,16 @@
   /* GeoJSON Point */
   var point = L.geoJson(null, {
     onEachFeature: function(feature, layer) {
-			var editUrl = "{{ route('polyline.edit', ':id') }}";
+			var editUrl = "{{ route('point.edit', ':id') }}";
 			editUrl = editUrl.replace(':id', feature.properties.id);
 
-			var deleteUrl = "{{ route('polyline.destroy', ':id') }}";
+			var deleteUrl = "{{ route('point.destroy', ':id') }}";
 			deleteUrl = deleteUrl.replace(':id', feature.properties.id);
 
-      var popupContent = "<h5>Point</h5>" +
-        "<p>" + feature.properties.name + "</p>" +
+      var popupContent = "<table class='table table-sm'>" +
+					"<tr><th>Name</th><td>:</td><td>" + feature.properties.name + "</td></tr>" +
+					"<tr><th>Description</th><td>:</td><td>" + feature.properties.description + "</td></tr>" +
+				"</table>" +
         "<div class='d-flex flex-row'>" +
         "<a href='" + editUrl + "' class='btn btn-sm btn-warning text-dark me-2'><i class='bi bi-pencil-square'></i></a>" +
         "<form action='" + deleteUrl + "' method='Post'>" +
@@ -119,6 +121,7 @@
         "<button type='submit' class='btn btn-sm btn-danger text-light' onclick='return confirm(`Are you sure you want to delete point " + feature.properties.name + "?`)'><i class='bi bi-trash-fill'></i></button>" +
         "</form>" +
         "</div>";
+
       layer.on({
         click: function(e) {
           point.bindPopup(popupContent);
@@ -143,17 +146,20 @@
 			var deleteUrl = "{{ route('polyline.destroy', ':id') }}";
 			deleteUrl = deleteUrl.replace(':id', feature.properties.id);
 
-      var popupContent = "<h5>Polyline</h5>" +
-        "<p>" + feature.properties.name + "</p>" +
+      var popupContent = "<table class='table table-sm'>" +
+					"<tr><th>Name</th><td>:</td><td>" + feature.properties.name + "</td></tr>" +
+					"<tr><th>Description</th><td>:</td><td>" + feature.properties.description + "</td></tr>" +
+					"<tr><th>Length</th><td>:</td><td>" + feature.properties.length.toFixed(2) + " m</td></tr>" +
+				"</table>" +
         "<div class='d-flex flex-row'>" +
         "<a href='" + editUrl + "' class='btn btn-sm btn-warning text-dark me-2'><i class='bi bi-pencil-square'></i></a>" +
         "<form action='" + deleteUrl + "' method='Post'>" +
         '{{ csrf_field() }}' +
-				'{{ method_field("DELETE") }}' +
-        "<input type='hidden' name='_method' value='DELETE'>" +
-        "<button type='submit' class='btn btn-sm btn-danger text-light' onclick='return confirm(`Are you sure you want to delete polyline " + feature.properties.name + "?`)'><i class='bi bi-trash-fill'></i></button>" +
+        '{{ method_field("DELETE") }}' +
+        "<button type='submit' class='btn btn-sm btn-danger text-light' onclick='return confirm(`Are you sure you want to delete polygon " + feature.properties.name + "?`)'><i class='bi bi-trash-fill'></i></button>" +
         "</form>" +
         "</div>";
+
       layer.on({
         click: function(e) {
           polyline.bindPopup(popupContent);

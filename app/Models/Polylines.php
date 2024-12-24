@@ -14,4 +14,9 @@ class Polylines extends Model
 	{
 		return $this->select(DB::raw('id, name, description, ST_AsGeoJSON(geom) as geom, ST_Length(ST_SRID(geom, 4326)) as length, created_at, updated_at'))->get();
 	}
+
+	public function polyline($id)
+	{
+		return $this->select(DB::raw('id, name, description, ST_AsGeoJSON(geom) as geom, ST_Length(ST_SRID(geom, 4326)) as length, created_at, updated_at'))->find($id);
+	}
 }

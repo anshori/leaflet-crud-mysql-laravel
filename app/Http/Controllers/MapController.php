@@ -16,7 +16,7 @@ class MapController extends Controller
 			'page' => 'map'
 		];
 
-		return view('main', $data);
+		return view('home', $data);
 	}
 
 	/**

@@ -46,9 +46,10 @@
   </div>
 </div>
 
+@if ($page === "map")
 <!-- Modal Create Point -->
 <div class="modal fade" id="createpointModal" tabindex="-1" aria-labelledby="createpointModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="createpointModalLabel"><i class="bi bi-geo-alt-fill"></i> Create Point</h1>
@@ -63,7 +64,7 @@
           </div>
 					<div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <textarea class="form-control" name="description" id="description" rows="10"></textarea>
+            <textarea class="form-control" name="description" id="description" rows="5"></textarea>
           </div>
           <div class="mb-3">
             <label for="geom_point" class="form-label">Geometry WKT</label>
@@ -81,7 +82,7 @@
 
 <!-- Modal Create Polyline -->
 <div class="modal fade" id="createpolylineModal" tabindex="-1" aria-labelledby="createpolylineModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="createpolylineModalLabel"><i class="bi bi-slash-lg"></i> Create Polyline</h1>
@@ -96,7 +97,7 @@
           </div>
 					<div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <textarea class="form-control" name="description" id="description" rows="10"></textarea>
+            <textarea class="form-control" name="description" id="description" rows="5"></textarea>
           </div>
           <div class="mb-3">
             <label for="geom_polyline" class="form-label">Geometry WKT</label>
@@ -129,7 +130,7 @@
           </div>
           <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <textarea class="form-control" name="description" id="description" rows="10"></textarea>
+            <textarea class="form-control" name="description" id="description" rows="5"></textarea>
           </div>
           <div class="mb-3">
             <label for="geom_polygon" class="form-label">Geometry WKT</label>
@@ -144,11 +145,12 @@
     </div>
   </div>
 </div>
+@endif
 
 @if ($page === "edit-point")
 <!-- Modal Edit Point -->
 <div class="modal fade" id="editpointModal" tabindex="-1" aria-labelledby="editpointModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="editpointModalLabel"><i class="bi bi-geo-alt-fill"></i> Edit Point</h1>
@@ -159,16 +161,16 @@
           @csrf
           @method('PUT')
           <div class="mb-3">
-            <label for="name_edit_point" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name_edit_point" name="name_edit_point" placeholder="Fill in the name" required>
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Fill in the name" required>
           </div>
 					<div class="mb-3">
-            <label for="description_edit_point" class="form-label">Description</label>
-            <textarea class="form-control" name="description_edit_point" id="description_edit_point" rows="10"></textarea>
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" name="description" id="description" rows="5"></textarea>
           </div>
           <div class="mb-3">
-            <label for="geom_edit_point" class="form-label">Geometry WKT</label>
-            <textarea class="form-control" id="geom_edit_point" name="geom_edit_point" rows="3" readonly></textarea>
+            <label for="geom" class="form-label">Geometry WKT</label>
+            <textarea class="form-control" id="geom" name="geom" rows="3" readonly></textarea>
           </div>
       </div>
       <div class="modal-footer">
@@ -184,27 +186,27 @@
 @if ($page === "edit-polyline")
 <!-- Modal Edit Polyline -->
 <div class="modal fade" id="editpolylineModal" tabindex="-1" aria-labelledby="editpolylineModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="editpolylineModalLabel"><i class="bi bi-geo-alt-fill"></i> Edit Polyline</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="" method="Post" id="form-update-polyline">
+        <form action="{{ route('polyline.update', $id) }}" method="Post" id="form-update-polyline">
           @csrf
           @method('PUT')
           <div class="mb-3">
-            <label for="name_edit_polyline" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name_edit_polyline" name="name_edit_polyline" placeholder="Fill in the name" required>
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Fill in the name" required>
           </div>
 					<div class="mb-3">
-            <label for="description_edit_polyline" class="form-label">Description</label>
-            <textarea class="form-control" name="description_edit_polyline" id="description_edit_polyline" rows="10"></textarea>
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" name="description" id="description" rows="5"></textarea>
           </div>
           <div class="mb-3">
-            <label for="geom_edit_polyline" class="form-label">Geometry WKT</label>
-            <textarea class="form-control" id="geom_edit_polyline" name="geom_edit_polyline" rows="3" readonly></textarea>
+            <label for="geom" class="form-label">Geometry WKT</label>
+            <textarea class="form-control" id="geom" name="geom" rows="3" readonly></textarea>
           </div>
       </div>
       <div class="modal-footer">
@@ -220,27 +222,27 @@
 @if ($page === "edit-polygon")
 <!-- Modal Edit Polygon -->
 <div class="modal fade" id="editpolygonModal" tabindex="-1" aria-labelledby="editpolygonModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="editpolygonModalLabel"><i class="bi bi-geo-alt-fill"></i> Edit Polygon</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="" method="Post" id="form-update-polygon">
+        <form action="{{ route('polygon.update', $id) }}" method="Post" id="form-update-polygon">
           @csrf
           @method('PUT')
           <div class="mb-3">
-            <label for="name_edit_polygon" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name_edit_polygon" name="name_edit_polygon" placeholder="Fill in the name" required>
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Fill in the name" required>
           </div>
 					<div class="mb-3">
-            <label for="description_edit_polygon" class="form-label">Description</label>
-            <textarea class="form-control" name="description_edit_polygon" id="description_edit_polygon" rows="10"></textarea>
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" name="description" id="description" rows="5"></textarea>
           </div>
           <div class="mb-3">
-            <label for="geom_edit_polygon" class="form-label">Geometry WKT</label>
-            <textarea class="form-control" id="geom_edit_polygon" name="geom_edit_polygon" rows="3" readonly></textarea>
+            <label for="geom" class="form-label">Geometry WKT</label>
+            <textarea class="form-control" id="geom" name="geom" rows="3" readonly></textarea>
           </div>
       </div>
       <div class="modal-footer">
