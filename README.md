@@ -16,17 +16,17 @@ Leaflet CRUD MySQL/MariaDB Laravel is a simple application that demonstrates how
 
 ## Screenshot
 
-![Preview Map View](public/screenshot/pic1.png "Home Page")
+![Preview Map View](public/images/screenshot/pic1.png "Home Page")
 
-![Preview Popup Info](public/screenshot/pic2.png "Popup Info")
+![Preview Popup Info](public/images/screenshot/pic2.png "Popup Info")
 
-![Preview Create](public/screenshot/pic2.png "Create New Feature")
+![Preview Create](public/images/screenshot/pic2.png "Create New Feature")
 
-![Preview Form Create Feature](public/screenshot/pic2.png "Form Create New Feature")
+![Preview Form Create Feature](public/images/screenshot/pic2.png "Form Create New Feature")
 
-![Preview Edit Feature](public/screenshot/pic2.png "Edit Feature")
+![Preview Edit Feature](public/images/screenshot/pic2.png "Edit Feature")
 
-![Preview Info](public/screenshot/pic2.png "Info")
+![Preview Info](public/images/screenshot/pic2.png "Info")
 
 ## Requirements
 
