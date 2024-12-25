@@ -14,6 +14,20 @@ Leaflet CRUD MySQL/MariaDB Laravel is a simple application that demonstrates how
 - Calculate area for polygon
 - Calculate length for line
 
+## Screenshot
+
+![Preview Map View](public/screenshot/pic1.png "Home Page")
+
+![Preview Popup Info](public/screenshot/pic2.png "Popup Info")
+
+![Preview Create](public/screenshot/pic2.png "Create New Feature")
+
+![Preview Form Create Feature](public/screenshot/pic2.png "Form Create New Feature")
+
+![Preview Edit Feature](public/screenshot/pic2.png "Edit Feature")
+
+![Preview Info](public/screenshot/pic2.png "Info")
+
 ## Requirements
 
 - PHP 8.2 or higher
