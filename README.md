@@ -59,6 +59,9 @@ Leaflet CRUD MySQL/MariaDB Laravel is a simple application that demonstrates how
 #### Makefile Installation
 
 - Clone the repository
+- Create a new database
+- Copy the `.env.example` file to `.env`
+- Update the `.env` file with your database credentials
 - Run `make setup`
 - Run `make dev`
 - Visit `http://localhost:8000` in your browser
