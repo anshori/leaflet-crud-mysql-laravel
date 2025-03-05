@@ -69,9 +69,9 @@
       $('#geom_polyline').val(objectGeometry);
       $('#createpolylineModal').modal('show');
 
-      // modal dismiss reload
+      // modal dismiss clear drawnItems
       $('#createpolylineModal').on('hidden.bs.modal', function() {
-        location.reload();
+        drawnItems.clearLayers();
       });
     } else if (type === 'polygon' || type === 'rectangle') {
       $('#geom_polygon').empty();
@@ -79,9 +79,9 @@
       $('#geom_polygon').val(objectGeometry);
       $('#createpolygonModal').modal('show');
 
-      // modal dismiss reload
+      // modal dismiss clear drawnItems
       $('#createpolygonModal').on('hidden.bs.modal', function() {
-        location.reload();
+        drawnItems.clearLayers();
       });
     } else if (type === 'marker') {
       $('#geom_point').empty();
@@ -89,9 +89,9 @@
       $('#geom_point').val(objectGeometry);
       $('#createpointModal').modal('show');
 
-      // modal dismiss reload
+      // modal dismiss clear drawnItems
       $('#createpointModal').on('hidden.bs.modal', function() {
-        location.reload();
+        drawnItems.clearLayers();
       });
     } else {
       console.log('__undefined__');
