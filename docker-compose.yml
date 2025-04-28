@@ -53,11 +53,15 @@ services:
     #     ports:
     #         - 8888:80
     # Mailing Server
-    mail:
+    mailhog:
         image: mailhog/mailhog
+        logging:
+            driver: 'none'
         ports:
+            - 1025:1025 
             - 8025:8025
         expose:
+            - 1025
             - 8025
         restart: no
 volumes:
