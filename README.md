@@ -66,6 +66,18 @@ Leaflet CRUD MySQL/MariaDB Laravel is a simple application that demonstrates how
 - Run `make dev`
 - Visit `http://localhost:8000` in your browser
 
+#### Docker Installation
+- Clone the repository
+- Copy the `.env.example` file to `.env`
+- Update the `.env` file with your database credentials
+- Update the `.env` parameter `DB_HOST` to `database`
+- Run `docker-compose up -d`
+- Run `docker-compose exec app php artisan key:generate`
+- Run `docker-compose exec app php artisan migrate`
+- Run `docker-compose exec app php artisan storage:link` if you want to use storage
+- Run `docker-compose exec app php artisan optimize`
+- Visit `http://localhost` in your browser
+
 #### Training
 
 Contact me at [m.anshory@gmail.com](mailto:m.anshory@gmail.com) or [sinaugis.com](https://sinaugis.com) or [SinauGIS Official: 0895-4217-12737](https://wa.me/0895421712737) for training.
