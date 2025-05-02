@@ -71,6 +71,9 @@ Leaflet CRUD MySQL/MariaDB Laravel is a simple application that demonstrates how
 - Copy the `.env.example` file to `.env`
 - Update the `.env` file with your database credentials
 - Update the `.env` parameter `DB_HOST` to `database`
+- Run `composer install`
+- Run `npm install`
+- Run `npm run build`
 - Run `docker-compose up -d`
 - Run `docker-compose exec app php artisan key:generate`
 - Run `docker-compose exec app php artisan migrate`

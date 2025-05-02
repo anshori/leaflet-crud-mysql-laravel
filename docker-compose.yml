@@ -5,17 +5,17 @@ services:
     app:
         build:
             context: .
-            dockerfile: app.dockerfile
+            dockerfile: ./docker/app/Dockerfile
         working_dir: /var/www
         volumes:
             - ./:/var/www
         depends_on:
             - "database"
     # Web Server
-    web:
+    nginx:
         build:
             context: .
-            dockerfile: web.dockerfile
+            dockerfile: ./docker/nginx/Dockerfile
         working_dir: /var/www
         volumes:
             - ./:/var/www
@@ -29,7 +29,7 @@ services:
         restart: no
         volumes:
             - dbdata:/var/lib/mysql:rw
-            - ./my.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
+            - ./docker/mysql/my.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
         environment:
             MYSQL_DATABASE: ${DB_DATABASE}
             MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
